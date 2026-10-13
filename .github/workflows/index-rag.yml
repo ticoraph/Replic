@@ -1,0 +1,25 @@
+name: Index RAG (prod pgvector)
+
+# Réindexe le corpus data/raw/ dans la DB pgvector de prod.
+# CPU only, tourne sur le runner GitHub. Idempotent (hash de contenu).
+
+on:
+  workflow_dispatch:
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v4
+
+      - name: Apply pgvector schema (idempotent)
+        env:
+          DATABASE_URL: ${{ secrets.PROD_DATABASE_URL }}
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f embeddings/pgvector/schema.sql
+
+      - name: Index corpus into prod pgvector
+        env:
+          DATABASE_URL: ${{ secrets.PROD_DATABASE_URL }}
+        run: uv run --group rag python src/rag/index.py

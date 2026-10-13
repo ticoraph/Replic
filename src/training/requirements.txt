@@ -1,0 +1,5 @@
+# Dépendances installées DANS le job GPU (SageMaker / Vertex)
+unsloth
+trl>=0.9
+datasets>=2.20
+wandb>=0.17

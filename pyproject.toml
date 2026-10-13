@@ -1,0 +1,56 @@
+[project]
+name = "replic"
+version = "0.1.0"
+description = "Chatbot IA personnages Pulp Fiction — QLoRA Llama 3.1 8B + RAG pgvector"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic-settings>=2.4",
+    "psycopg[binary]>=3.2",
+    "httpx>=0.27",
+    "openai>=1.50",
+    "python-dotenv>=1.0",
+    "modal>=1.5.2",
+]
+
+[dependency-groups]
+rag = [
+    "sentence-transformers>=3.0",
+    "pgvector>=0.3",
+    "tiktoken>=0.7",
+]
+data = [
+    "datasets>=2.20",
+    "transformers>=4.44",
+    "jinja2>=3.1",
+]
+tracking = [
+    "wandb>=0.17",
+]
+# groupe "train" installé uniquement dans les jobs GPU (SageMaker / Vertex),
+# pas en local — unsloth exige CUDA.
+train = [
+    "unsloth",
+    "trl>=0.9",
+    "wandb>=0.17",
+]
+eval = [
+    "ragas>=0.1.21",
+    "langchain-openai>=0.2",
+    "wandb>=0.17",
+]
+ui = [
+    "streamlit>=1.37",
+]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "backend"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

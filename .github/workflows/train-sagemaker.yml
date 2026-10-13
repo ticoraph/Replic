@@ -1,0 +1,50 @@
+name: Train QLoRA (SageMaker)
+
+on:
+  workflow_dispatch:
+    inputs:
+      instance:
+        description: Instance GPU
+        default: ml.g5.xlarge
+      use_spot:
+        description: Utiliser des instances spot (~-60 %)
+        type: boolean
+        default: true
+      epochs:
+        description: Nombre d'epochs
+        default: "2"
+      region:
+        description: Région AWS (quota/capacité GPU requis dans cette région)
+        default: eu-central-1
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ inputs.region }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install "sagemaker<3" boto3
+
+      - name: Launch SageMaker training job
+        env:
+          SAGEMAKER_ROLE_ARN: ${{ secrets.SAGEMAKER_ROLE_ARN }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
+        run: |
+          python src/training/launch_sagemaker.py \
+            --instance "${{ inputs.instance }}" \
+            --epochs "${{ inputs.epochs }}" \
+            ${{ inputs.use_spot && '--use-spot' || '' }}

@@ -1,0 +1,56 @@
+name: Train QLoRA (Vertex AI)
+
+on:
+  workflow_dispatch:
+    inputs:
+      machine:
+        description: Type de machine
+        default: a2-highgpu-1g
+      gpu:
+        description: Accélérateur
+        default: NVIDIA_TESLA_A100
+      use_spot:
+        description: Utiliser une instance préemptible (quota déjà approuvé, contrairement à l'on-demand)
+        type: boolean
+        default: true
+      epochs:
+        description: Nombre d'epochs
+        default: "2"
+      region:
+        description: Région GCP (quota GPU requis dans cette région)
+        default: europe-west4
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
+          service_account: ${{ secrets.GCP_SA_EMAIL }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install google-cloud-aiplatform
+
+      - name: Launch Vertex AI custom training job
+        env:
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          GCP_REGION: ${{ inputs.region }}
+          GCP_STAGING_BUCKET: ${{ secrets.GCP_STAGING_BUCKET }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
+        run: |
+          python src/training/launch_vertex.py \
+            --machine "${{ inputs.machine }}" \
+            --gpu "${{ inputs.gpu }}" \
+            --epochs "${{ inputs.epochs }}" \
+            ${{ inputs.use_spot && '--use-spot' || '' }}

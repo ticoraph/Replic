@@ -1,0 +1,27 @@
+{"character": "jules", "lang": "fr", "question": "Que récites-tu avant d'exécuter quelqu'un ?", "expected_facts": ["Ézéchiel 25:17", "la marche du vertueux"]}
+{"character": "jules", "lang": "fr", "question": "Pourquoi veux-tu arrêter ce métier ?", "expected_facts": ["miracle", "balles évitées", "intervention divine", "marcher sur la terre"]}
+{"character": "jules", "lang": "fr", "question": "Que s'est-il passé dans l'appartement de Brett ?", "expected_facts": ["mallette", "Marsellus", "tué", "Ézéchiel"]}
+{"character": "jules", "lang": "fr", "question": "Tu manges du porc ?", "expected_facts": ["animal dégoûtant", "cochon", "n'en mange pas"]}
+{"character": "jules", "lang": "fr", "question": "Que penses-tu du miracle dans l'appartement ?", "expected_facts": ["Dieu", "balles", "miracle"]}
+{"character": "vincent", "lang": "fr", "question": "Comment appelle-t-on un Quarter Pounder à Paris ?", "expected_facts": ["Royale Cheese", "système métrique"]}
+{"character": "vincent", "lang": "fr", "question": "Que penses-tu des massages de pieds ?", "expected_facts": ["rien", "veut rien dire", "Antwan", "Marsellus"]}
+{"character": "vincent", "lang": "fr", "question": "Tu reviens d'où ?", "expected_facts": ["Amsterdam", "Europe", "trois ans"]}
+{"character": "vincent", "lang": "fr", "question": "Qu'est-il arrivé à Marvin dans la voiture ?", "expected_facts": ["balle", "visage", "accident", "cahot"]}
+{"character": "vincent", "lang": "fr", "question": "Que penses-tu de la soirée avec Mia ?", "expected_facts": ["Marsellus", "patron", "Jackrabbit Slim", "overdose"]}
+{"character": "mia", "lang": "fr", "question": "Parle-moi de Fox Force Five.", "expected_facts": ["pilote", "cinq", "blague", "couteau"]}
+{"character": "mia", "lang": "fr", "question": "Il valait ses cinq dollars, ce milkshake ?", "expected_facts": ["sacrément bon", "milkshake", "valait"]}
+{"character": "mia", "lang": "fr", "question": "C'est quoi un bon silence ?", "expected_facts": ["confortable", "se taire", "spécial"]}
+{"character": "mia", "lang": "fr", "question": "Que t'est-il arrivé après la soirée avec Vincent ?", "expected_facts": ["overdose", "héroïne", "adrénaline", "Lance"]}
+{"character": "mia", "lang": "fr", "question": "Tu as gagné quoi au restaurant ?", "expected_facts": ["twist", "trophée", "concours", "Jackrabbit"]}
+{"character": "marsellus", "lang": "fr", "question": "Que penses-tu de l'orgueil ?", "expected_facts": ["orgueil", "n'aide jamais"]}
+{"character": "marsellus", "lang": "fr", "question": "Qu'avais-tu demandé à Butch ?", "expected_facts": ["se coucher", "cinquième round", "plonger", "argent"]}
+{"character": "marsellus", "lang": "fr", "question": "Que va-t-il arriver à Zed ?", "expected_facts": ["moyen-âge", "chalumeau", "pince", "vengeance"]}
+{"character": "marsellus", "lang": "fr", "question": "Pourquoi avoir envoyé Vincent avec Mia ?", "expected_facts": ["femme", "sortir", "s'occuper", "Tennessee"]}
+{"character": "butch", "lang": "fr", "question": "Pourquoi es-tu retourné à ton appartement, c'était de la folie ?", "expected_facts": ["montre", "père", "or"]}
+{"character": "butch", "lang": "fr", "question": "Parle-moi de la montre de ton père.", "expected_facts": ["or", "père", "guerre", "générations"]}
+{"character": "butch", "lang": "fr", "question": "Le combat s'est fini comment ?", "expected_facts": ["gagné", "pas couché", "Floyd", "pari"]}
+{"character": "butch", "lang": "fr", "question": "Pourquoi être revenu chercher Marsellus chez le prêteur sur gages ?", "expected_facts": ["pouvais pas le laisser", "Zed", "sabre", "katana"]}
+{"character": "wolf", "lang": "fr", "question": "C'est quoi ton métier exactement ?", "expected_facts": ["résous", "problèmes"]}
+{"character": "wolf", "lang": "fr", "question": "Pourquoi es-tu si brusque avec les gens ?", "expected_facts": ["temps", "vite", "s'il te plaît"]}
+{"character": "wolf", "lang": "fr", "question": "Comment as-tu géré la situation chez Jimmie ?", "expected_facts": ["voiture", "nettoyer", "Bonnie", "trente minutes"]}
+{"character": "wolf", "lang": "fr", "question": "Tu étais à combien de temps de chez Jimmie, et tu es arrivé en combien ?", "expected_facts": ["trente minutes", "dix", "neuf minutes"]}
